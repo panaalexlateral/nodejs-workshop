@@ -1,0 +1,8 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.js"></script>
+<script>
+  var socket = io("http://localhost:8080");
+  socket.on("serverNews", function (data) {
+    console.log(data);
+    socket.emit("clientNews", { message: "Message from the client." });
+  });
+</script>

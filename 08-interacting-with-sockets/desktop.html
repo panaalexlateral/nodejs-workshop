@@ -1,0 +1,26 @@
+<head>
+  <style>
+    #phone {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 250px;
+      height: 500px;
+      background-color: #00B7FF;
+      margin: -250px 0 0 -125px;
+    }
+  </style>
+</head>
+<body>
+  <div id="phone"></div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.6/socket.io.js"></script>
+<script>
+  var socket = io("http://10.10.10.229:8080");
+  var phone = document.getElementById("phone");
+
+  socket.on("orientationChange", function(data) {
+    phone.style.transform = "rotate(" + (Math.round(data.beta) + 90) + "deg)";
+  });
+</script>
